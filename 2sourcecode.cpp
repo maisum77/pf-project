@@ -7,7 +7,8 @@
 #include <ctime>      // To seed random numbers using current time
 using namespace std ;
 
-void mcqsload (string filename , vector<string> mcqs )
+
+void mcqsload ( string& filename , vector<string>& mcqs )
 {
     ifstream file (filename) ;
     string line , question ;
@@ -15,18 +16,21 @@ void mcqsload (string filename , vector<string> mcqs )
     {
         if (line.empty())
         {
-            if (!question.empty()) 
-            { 
+             
+             
                 mcqs.push_back(question); 
                 question.clear();
-            }
+        }
             else 
             {
                 question += line + "\n" ;
             }
-        }
+        
+        
     }
+    
     file.close();
+    
     
 }
 int main ()
@@ -35,9 +39,15 @@ int main ()
     vector<string> mcqs ;
     string filename = "mcqs.txt" ;
     mcqsload(filename,mcqs);
+    if (mcqs.empty()) {
+        cout << "No MCQs found. Please check the file." << endl;
+        return 1;
+    }
+     
 
     vector<int> rnum;
-	for (int i = 0; i <=30 ; i++) {
+    int count = 1 ;
+	for (int i = 0; i<=30 ; i++) {
 	
 	int num ;
 	num = rand() % 101;
@@ -49,7 +59,8 @@ int main ()
 	};
     for (int j=0; j<=30 ; j++)
     {
-        cout << mcqs[rnum[j]] ;
+        cout << count << ") " <<mcqs[rnum[j]] << endl ;
+        count++ ;
     }
     return 0;
 	
