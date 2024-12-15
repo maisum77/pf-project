@@ -1,0 +1,5 @@
+What is the largest continent by area?
+a) Africa
+b) Asia
+c) Europe
+d) North America
