@@ -41,13 +41,35 @@ void answers (string& filename , vector<string>& ans)
     {
         ans.push_back(line);
         line.clear();
-        cout<<"\n";
+        //cout<<"\n";
 
     }
     file.close();
 }
 int main ()
 {
+    int choice,TQ;
+    again:
+    cout<<"-------------choice what you  want to go with-------------"<<endl;
+    cout<<"1=premade template\n2=custom generation"<<endl;
+    cout<<"enter=";
+    cin>>choice;
+    if(choice==1)
+    {
+        TQ=30;
+    }
+    else if(choice==2)
+    {
+        cout<<"::enter number of mcqs you want to generate::"<<endl;
+        cout<<"enter=";
+        cin>>TQ;
+    }
+    else
+    {
+        cout<<"invalid choice!!";
+        goto again ;
+
+    }
     srand(time(0));
     //for mcqs
     vector<string> mcqs ;
@@ -64,7 +86,7 @@ int main ()
     // for random numbers
     vector<int> rnum;
     int count = 1 ;
-	for (int i = 0; i<=30 ; i++) {
+	for (int i = 0; i<TQ ; i++) {
 	int num ;
 	num = rand() % 101;
 	if (num!=0)
@@ -74,9 +96,9 @@ int main ()
 	else {};
 	};
     // for printing mcqs and answers 
-    string userans [30] ;
+    vector<string> userans (TQ) ;
     int correct=0 ,wrong=0 ;
-    for (int j=0; j<=10 ; j++)
+    for (int j=0; j<TQ ; j++)
     {
         cout << count <<") " << mcqs[rnum[j]] << endl;
         cout<< "your answer=";
@@ -93,7 +115,11 @@ int main ()
         }
         count++ ;
     }
-    
+    cout<<"------------KEY------------"<<endl;
+    for (int k=0;k<TQ;k++)
+    {
+       cout<< ans[rnum[k]]<<endl;
+    }
     cout << "correct answeers="<< correct <<endl ;
     cout << "wrong answers="<< wrong << endl;
     return 0;
