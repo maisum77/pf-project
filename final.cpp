@@ -95,6 +95,17 @@ int main ()
 	}
 	else {};
 	};
+    //check reapted if any  
+    for(int a=0;a<=TQ;a++)
+    {
+    for(int b=0;b<=TQ;b++)
+    {
+        if(rnum[a]==rnum[b])
+        {
+            rnum[a]= rand() % 101;
+        }
+    }
+    }
     // for printing mcqs and answers 
     vector<string> userans (TQ) ;
     int correct=0 ,wrong=0 ;
